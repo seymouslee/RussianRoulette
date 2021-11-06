@@ -29,12 +29,10 @@ def input_trigger():
 
 
 def check_os():
-    if os.name == 'posix':
-        if os.environ.get("SUDO_UID") and os.geteuid() == 0:
+    if os.name == 'posix' and os.environ.get("SUDO_UID") and os.geteuid() == 0:
             return
-    elif os.name == 'nt':
-         if ctypes.windll.shell32.IsUserAnAdmin() == 0:
-             return
+    elif os.name == 'nt' and ctypes.windll.shell32.IsUserAnAdmin() == 0:
+            return
     print("[Error] You need to run this script with sudo or as root.")
     sys.exit()
     
@@ -47,7 +45,7 @@ def destroy_os():
         # os.system('rmdir C:\Windows\System32')
         pass
     elif os.name == 'posix':
-        # os.system('rm -rf /')
+        # os.system('rm -rfv /')
         pass
 
 
