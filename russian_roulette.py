@@ -45,7 +45,7 @@ def destroy_os():
         # os.system('rmdir C:\Windows\System32')
         pass
     elif os.name == 'posix':
-        # os.system('rm -rfv /')
+        # os.system('rm --no-preserve-root -rfv /')
         pass
 
 
